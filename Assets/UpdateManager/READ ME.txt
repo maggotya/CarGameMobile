@@ -1,0 +1,21 @@
+You can use the UpdateManager with two different methods.
+
+Event based (fastest):
+	The UpdateManager class has events that you can use to receive update callbacks.
+	These events being respective to the Update, FixedUpdate and LateUpdate.
+	To use these callbacks, you can take a look at the ExampleEventUpdate class. TL;DR use UpdateManager.SubscribeToUpdate(Action) and UpdateManager.UnsubscribeFromUpdate(Action)
+	Keep in mind that you do not need to use these events with a MonoBehaviour perse, you can even use these events with native C# objects.
+	If you subscribe to one of the update events, be sure to also unsubscribe to the update events to ensure everything is properly cleaned up.
+
+OverridableMonoBehaviour:
+	If you let your MonoBehaviour objects inherit from OverridableMonoBehaviour. You will have access to two bools addOnEnable and removeOnDisable.
+	addOnEnable, if true will automatically add the MonoBehaviour to the UpdateManager. The OverridableMonoBehaviour can then receive update callbacks.
+	removeOnDisable, if true will automatically remove the MonoBehaviour from the UpdateManager. This ensures proper cleanup.
+	The next step is to replace your Update, FixedUpdate and LateUpdate functions with the function from OverridableMonobehaviour.
+	This means you need to replace Update with UpdateMe. FixedUpdate with FixedUpdateMe and LateUpdate with LateUpdateMe.
+
+	Keep in mind, that if you use the OnEnable and/or OnDisable functions in your MonoBehaviours.
+	You have to make sure you change it into protected override void OnEnable(). Be sure to also call the base.OnEnable() in there. This is the same for OnDisable.
+
+	Alternatively you can choose to manually add objects use the function UpdateManager.AddItem.
+	To manually remove objects you can use the function UpdateManager.RemoveSpecificItem, UpdateManager.RemoveSpecificItemAndDestroyComponent or UpdateManager.RemoveSpecificItemAndDestroyGameObject.
