@@ -1,5 +1,6 @@
 using Profile;
 using UnityEngine;
+using Services.Ads;
 using Services.Analytics;
 
 internal class EntryPoint : MonoBehaviour
@@ -8,6 +9,7 @@ internal class EntryPoint : MonoBehaviour
     private const GameState InitialState = GameState.Start;
 
     [SerializeField] private Transform _placeForUi;
+    [SerializeField] private UnityAdsTools _adsService;
     [SerializeField] private AnalyticsManager _analytics;
 
     private MainController _mainController;
@@ -19,6 +21,7 @@ internal class EntryPoint : MonoBehaviour
         _mainController = new MainController(_placeForUi, profilePlayer);
 
         _analytics.SendMainMenuOpened();
+        _adsService.ShowInterstitial();
     }
 
     private void OnDestroy()
