@@ -1,7 +1,7 @@
 using Profile;
 using UnityEngine;
-using Services.Ads;
 using Services.Analytics;
+using Services.Ads.UnityAds;
 
 internal class EntryPoint : MonoBehaviour
 {
@@ -9,7 +9,7 @@ internal class EntryPoint : MonoBehaviour
     private const GameState InitialState = GameState.Start;
 
     [SerializeField] private Transform _placeForUi;
-    [SerializeField] private UnityAdsTools _adsService;
+    [SerializeField] private UnityAdsService _adsService;
     [SerializeField] private AnalyticsManager _analytics;
 
     private MainController _mainController;
@@ -21,11 +21,16 @@ internal class EntryPoint : MonoBehaviour
         _mainController = new MainController(_placeForUi, profilePlayer);
 
         _analytics.SendMainMenuOpened();
-        _adsService.ShowInterstitial();
+
+        if (_adsService.IsInitialized) OnAdsInitialized();
+        else _adsService.Initialized.AddListener(OnAdsInitialized);
     }
 
     private void OnDestroy()
     {
+        _adsService.Initialized.RemoveListener(OnAdsInitialized);
         _mainController.Dispose();
     }
+
+    private void OnAdsInitialized() => _adsService.InterstitialPlayer.Play();
 }
