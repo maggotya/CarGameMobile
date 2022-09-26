@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d72a813d9e48b5829288680dc95b9c, type: 3}
+  m_Name: ProductLibrary
+  m_EditorClassIdentifier: 
+  <Products>k__BackingField:
+  - <Id>k__BackingField: product_1
+    <ProductType>k__BackingField: 0
+  - <Id>k__BackingField: product_2
+    <ProductType>k__BackingField: 0
+  - <Id>k__BackingField: product_3
+    <ProductType>k__BackingField: 1
+  - <Id>k__BackingField: subscription_1
+    <ProductType>k__BackingField: 2
