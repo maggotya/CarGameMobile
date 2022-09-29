@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3950583012346268207}
   - component: {fileID: 6374357826842935290}
   m_Layer: 0
-  m_Name: endlessMove
+  m_Name: AccelerationMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
