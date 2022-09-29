@@ -15,10 +15,6 @@ namespace Services.Analytics
             };
 
 
-        public void SendMainMenuOpened() =>
-            SendEvent("MainMenuOpened");
-
-
         private void SendEvent(string eventName)
         {
             for (int i = 0; i < _services.Length; i++)
