@@ -7,7 +7,7 @@ namespace Ui
 {
     internal class SettingsMenuController : BaseController
     {
-        private readonly ResourcePath _resourcePath = new("Prefabs/SettingsMenu");
+        private readonly ResourcePath _resourcePath = new("Prefabs/Ui/SettingsMenu");
         private readonly ProfilePlayer _profilePlayer;
         private readonly SettingsMenuView _view;
 
