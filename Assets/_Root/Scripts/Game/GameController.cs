@@ -1,14 +1,16 @@
 using Tool;
 using Profile;
+using UnityEngine;
 using Game.Car;
 using Game.InputLogic;
 using Game.TapeBackground;
+using Features.AbilitySystem;
 
 namespace Game
 {
     internal class GameController : BaseController
     {
-        public GameController(ProfilePlayer profilePlayer)
+        public GameController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
             var leftMoveDiff = new SubscriptionProperty<float>();
             var rightMoveDiff = new SubscriptionProperty<float>();
@@ -21,6 +23,9 @@ namespace Game
 
             var carController = new CarController();
             AddController(carController);
+
+            var abilitiesController = new AbilitiesController(placeForUi, carController);
+            AddController(abilitiesController);
         }
     }
 }
