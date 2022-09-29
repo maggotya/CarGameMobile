@@ -5,9 +5,12 @@ namespace Tool
     internal static class ResourcesLoader
     {
         public static Sprite LoadSprite(ResourcePath path) =>
-            Resources.Load<Sprite>(path.PathResource);
+            LoadObject<Sprite>(path);
 
         public static GameObject LoadPrefab(ResourcePath path) =>
-            Resources.Load<GameObject>(path.PathResource);
+            LoadObject<GameObject>(path);
+
+        public static TObject LoadObject<TObject>(ResourcePath path) where TObject : Object =>
+            Resources.Load<TObject>(path.PathResource);
     }
 }
