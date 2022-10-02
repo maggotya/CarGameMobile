@@ -3,7 +3,12 @@ using Services.Analytics.UnityAnalytics;
 
 namespace Services.Analytics
 {
-    internal class AnalyticsManager : MonoBehaviour
+    internal interface IAnalyticsManager
+    {
+
+    }
+
+    internal class AnalyticsManager : MonoBehaviour, IAnalyticsManager
     {
         private IAnalyticsService[] _services;
 

@@ -365,7 +365,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1219474787}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &959890336
 MonoBehaviour:
@@ -465,6 +465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1219474787}
+  - component: {fileID: 1219474789}
   - component: {fileID: 1219474788}
   m_Layer: 0
   m_Name: Services
@@ -488,6 +489,7 @@ Transform:
   - {fileID: 933958559}
   - {fileID: 205816523}
   - {fileID: 959890335}
+  - {fileID: 933958559}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -503,6 +505,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1866f6a6214f2988297a3b8ced9056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1219474789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219474786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d39602ed2c4894887fec7b62fbdf26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adsService: {fileID: 205816524}
+  _iapService: {fileID: 959890336}
+  _analyticsManager: {fileID: 933958560}
 --- !u!1 &1980575205
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +635,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _placeForUi: {fileID: 1903552}
-  _iapService: {fileID: 959890336}
-  _adsService: {fileID: 205816524}
-  _analytics: {fileID: 933958560}
