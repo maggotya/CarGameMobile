@@ -27,6 +27,8 @@ namespace Services.Analytics
         {
             for (int i = 0; i < _services.Length; i++)
                 _services[i].SendTransaction(productId, amount, currency);
+
+            Log($"Sent transaction {productId}");
         }
 
 
@@ -34,6 +36,12 @@ namespace Services.Analytics
         {
             for (int i = 0; i < _services.Length; i++)
                 _services[i].SendEvent(eventName);
+
+            Log($"Sent {eventName}");
         }
+
+
+        private void Log(string message) =>
+            Debug.Log($"[{GetType().Name}] {message}");
     }
 }

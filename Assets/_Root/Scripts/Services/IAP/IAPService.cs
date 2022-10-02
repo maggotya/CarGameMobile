@@ -81,6 +81,7 @@ namespace Services.IAP
             string currency = product.metadata.isoCurrencyCode;
             ServiceRoster.Analytics.SendTransaction(productId, amount, currency);
 
+            Log($"Purchased: {productId}");
             PurchaseSucceed?.Invoke();
         }
 
