@@ -8,14 +8,7 @@ namespace Game.InputLogic
         [SerializeField] private float _inputMultiplier = 0.2f;
 
 
-        private void Start() =>
-            UpdateManager.SubscribeToUpdate(Move);
-
-        private void OnDestroy() =>
-            UpdateManager.UnsubscribeFromUpdate(Move);
-
-
-        private void Move()
+        protected override void Move()
         {
             float offset = Mathf.Clamp(Input.acceleration.x, -1, 1);
             float moveValue = Speed * _inputMultiplier * Time.deltaTime * offset;
