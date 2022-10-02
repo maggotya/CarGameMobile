@@ -17,14 +17,16 @@ namespace Ui
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, OpenSettings, OpenShed, PlayRewardedAds);
+            _view.Init(StartGame, OpenSettings, OpenShed, PlayRewardedAds, BuyProduct);
 
             SubscribeAds();
+            SubscribeIAP();
         }
 
         protected override void OnDispose()
         {
             UnsubscribeAds();
+            UnsubscribeIAP();
         }
 
 
@@ -49,6 +51,9 @@ namespace Ui
         private void PlayRewardedAds() =>
             ServiceRoster.AdsService.RewardedPlayer.Play();
 
+        private void BuyProduct(string productId) =>
+            ServiceRoster.IAPService.Buy(productId);
+
         private void SubscribeAds()
         {
             ServiceRoster.AdsService.RewardedPlayer.Finished += OnAdsFinished;
@@ -63,7 +68,22 @@ namespace Ui
             ServiceRoster.AdsService.RewardedPlayer.Skipped -= OnAdsCancelled;
         }
 
+        private void SubscribeIAP()
+        {
+            ServiceRoster.IAPService.PurchaseSucceed.AddListener(OnIAPSucceed);
+            ServiceRoster.IAPService.PurchaseFailed.AddListener(OnIAPFailed);
+        }
+
+        private void UnsubscribeIAP()
+        {
+            ServiceRoster.IAPService.PurchaseSucceed.RemoveListener(OnIAPSucceed);
+            ServiceRoster.IAPService.PurchaseFailed.RemoveListener(OnIAPFailed);
+        }
+
         private void OnAdsFinished() => Log("You've received a reward for ads!");
         private void OnAdsCancelled() => Log("Receiving a reward for ads has been interrupted!");
+
+        private void OnIAPSucceed() => Log("Purchase succeed");
+        private void OnIAPFailed() => Log("Purchase failed");
     }
 }
