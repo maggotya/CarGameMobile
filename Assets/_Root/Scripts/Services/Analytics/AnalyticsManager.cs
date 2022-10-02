@@ -6,6 +6,7 @@ namespace Services.Analytics
     internal interface IAnalyticsManager
     {
         void SendGameStarted();
+        void SendTransaction(string productId, decimal amount, string currency);
     }
 
     internal class AnalyticsManager : MonoBehaviour, IAnalyticsManager
@@ -21,6 +22,12 @@ namespace Services.Analytics
 
         public void SendGameStarted() =>
             SendEvent("Game Started");
+
+        public void SendTransaction(string productId, decimal amount, string currency)
+        {
+            for (int i = 0; i < _services.Length; i++)
+                _services[i].SendTransaction(productId, amount, currency);
+        }
 
 
         private void SendEvent(string eventName)

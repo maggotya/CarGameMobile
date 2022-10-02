@@ -58,7 +58,7 @@ namespace Services.IAP
         PurchaseProcessingResult IStoreListener.ProcessPurchase(PurchaseEventArgs args)
         {
             if (_purchaseValidator.Validate(args))
-                PurchaseSucceed?.Invoke();
+                OnPurchaseSucceed(args.purchasedProduct);
             else
                 OnPurchaseFailed(args.purchasedProduct.definition.id, "NonValid");
 
@@ -74,6 +74,15 @@ namespace Services.IAP
             PurchaseFailed?.Invoke();
         }
 
+        private void OnPurchaseSucceed(UnityEngine.Purchasing.Product product)
+        {
+            string productId = product.definition.id;
+            decimal amount = (decimal)(product.definition.payout?.quantity ?? 1); // payout будет null в редакторе
+            string currency = product.metadata.isoCurrencyCode;
+            ServiceRoster.Analytics.SendTransaction(productId, amount, currency);
+
+            PurchaseSucceed?.Invoke();
+        }
 
         public void Buy(string id)
         {
