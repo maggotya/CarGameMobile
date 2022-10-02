@@ -79,4 +79,14 @@ internal abstract class BaseController : IDisposable
         _gameObjects ??= new List<GameObject>();
         _gameObjects.Add(gameObject);
     }
+
+
+    protected void Log(string message) =>
+        Debug.Log(WrapMessage(message));
+
+    protected void Error(string message) =>
+        Debug.LogError(WrapMessage(message));
+
+    private string WrapMessage(string message) =>
+        $"[{GetType().Name}] {message}";
 }

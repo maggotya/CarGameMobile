@@ -98,8 +98,5 @@ namespace Features.Shed
                 if (upgradeHandlers.TryGetValue(itemId, out IUpgradeHandler handler))
                     handler.Upgrade(upgradable);
         }
-
-        private void Log(string message) =>
-            Debug.Log($"[{GetType().Name}] {message}");
     }
 }
