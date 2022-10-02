@@ -1,5 +1,6 @@
 using Tool;
 using Profile;
+using Services;
 using UnityEngine;
 using Game.Car;
 using Game.InputLogic;
@@ -28,6 +29,8 @@ namespace Game
             _inputGameController = CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
             _abilitiesController = CreateAbilitiesController(placeForUi, _carController);
             _tapeBackgroundController = CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
+
+            ServiceRoster.Analytics.SendGameStarted();
         }
 
 

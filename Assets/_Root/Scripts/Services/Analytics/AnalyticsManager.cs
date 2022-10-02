@@ -5,7 +5,7 @@ namespace Services.Analytics
 {
     internal interface IAnalyticsManager
     {
-
+        void SendGameStarted();
     }
 
     internal class AnalyticsManager : MonoBehaviour, IAnalyticsManager
@@ -18,6 +18,9 @@ namespace Services.Analytics
             {
                 new UnityAnalyticsService()
             };
+
+        public void SendGameStarted() =>
+            SendEvent("Game Started");
 
 
         private void SendEvent(string eventName)
