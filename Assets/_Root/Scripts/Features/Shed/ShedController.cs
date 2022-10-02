@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Features.Inventory;
+using Features.Inventory.Items;
 using Features.Shed.Upgrade;
 using JetBrains.Annotations;
+using Object = UnityEngine.Object;
 
 namespace Features.Shed
 {
@@ -51,21 +53,47 @@ namespace Features.Shed
             return repository;
         }
 
-        private InventoryController CreateInventoryController(Transform placeForUi)
-        {
-            InventoryController inventoryController = new(placeForUi, _profilePlayer.Inventory);
-            AddController(inventoryController);
-
-            return inventoryController;
-        }
-
         private ShedView LoadView(Transform placeForUi)
         {
             GameObject prefab = ResourcesLoader.LoadPrefab(_viewPath);
-            GameObject objectView = UnityEngine.Object.Instantiate(prefab, placeForUi, false);
+            GameObject objectView = Object.Instantiate(prefab, placeForUi, false);
             AddGameObject(objectView);
 
             return objectView.GetComponent<ShedView>();
+        }
+
+        private InventoryController CreateInventoryController(Transform placeForUi)
+        {
+            InventoryView view = LoadInventoryView(placeForUi);
+            InventoryModel model = _profilePlayer.Inventory;
+            ItemsRepository repository = CreateItemsRepository();
+
+            InventoryController controller = new(view, model, repository);
+            AddController(controller);
+
+            return controller;
+        }
+
+        private InventoryView LoadInventoryView(Transform placeForUi)
+        {
+            ResourcePath path = new("Prefabs/Inventory/InventoryView");
+
+            GameObject prefab = ResourcesLoader.LoadPrefab(path);
+            GameObject objectView = Object.Instantiate(prefab, placeForUi);
+            AddGameObject(objectView);
+
+            return objectView.GetComponent<InventoryView>();
+        }
+
+        private ItemsRepository CreateItemsRepository()
+        {
+            ResourcePath path = new("Configs/Inventory/ItemConfigDataSource");
+
+            ItemConfig[] itemConfigs = ContentDataSourceLoader.LoadItemConfigs(path);
+            ItemsRepository repository = new(itemConfigs);
+            AddRepository(repository);
+
+            return repository;
         }
 
 
