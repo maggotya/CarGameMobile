@@ -1,67 +1,51 @@
-using Tool;
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using Features.AbilitySystem.Abilities;
 
 namespace Features.AbilitySystem
 {
     internal interface IAbilitiesController
-    { }
-
-    internal class AbilitiesController : BaseController
     {
-        private readonly ResourcePath _viewPath = new("Prefabs/Ability/AbilitiesView");
-        private readonly ResourcePath _dataSourcePath = new("Configs/Ability/AbilityItemConfigDataSource");
 
-        private readonly AbilitiesView _view;
-        private readonly AbilitiesRepository _repository;
-        private readonly IAbilityActivator _abilityActivator;
+    }
+
+    internal class AbilitiesController : BaseController, IAbilitiesController
+    {
+        private readonly IAbilitiesView _view;
+        private readonly IAbilitiesRepository _repository;
+        private readonly IAbilityActivator _activator;
 
 
         public AbilitiesController(
-            [NotNull] Transform placeForUi,
-            [NotNull] IAbilityActivator abilityActivator)
+            [NotNull] IAbilitiesView view,
+            [NotNull] IAbilitiesRepository repository,
+            [NotNull] IEnumerable<IAbilityItem> items,
+            [NotNull] IAbilityActivator activator)
         {
-            if (placeForUi == null)
-                throw new ArgumentNullException(nameof(placeForUi));
+            _view
+                = view ?? throw new ArgumentNullException(nameof(view));
 
-            _abilityActivator
-                = abilityActivator ?? throw new ArgumentNullException(nameof(abilityActivator));
+            _repository
+                = repository ?? throw new ArgumentNullException(nameof(repository));
 
-            AbilityItemConfig[] abilityItemConfigs = LoadAbilityItemConfigs();
-            _repository = CreateRepository(abilityItemConfigs);
-            _view = LoadView(placeForUi);
+            _activator
+                = activator ?? throw new ArgumentNullException(nameof(activator));
 
-            _view.Display(abilityItemConfigs, OnAbilityViewClicked);
+            if (items == null)
+                throw new ArgumentNullException(nameof(items));
+
+            _view.Display(items, OnAbilityViewClicked);
         }
 
-
-        private AbilityItemConfig[] LoadAbilityItemConfigs() =>
-            ContentDataSourceLoader.LoadAbilityItemConfigs(_dataSourcePath);
-
-        private AbilitiesRepository CreateRepository(AbilityItemConfig[] abilityItemConfigs)
-        {
-            AbilitiesRepository repository = new(abilityItemConfigs);
-            AddRepository(repository);
-
-            return repository;
-        }
-
-        private AbilitiesView LoadView(Transform placeForUi)
-        {
-            GameObject prefab = ResourcesLoader.LoadPrefab(_viewPath);
-            GameObject objectView = UnityEngine.Object.Instantiate(prefab, placeForUi, false);
-            AddGameObject(objectView);
-
-            return objectView.GetComponent<AbilitiesView>();
-        }
+        protected override void OnDispose() =>
+            _view.Clear();
 
 
         private void OnAbilityViewClicked(string abilityId)
         {
             if (_repository.Items.TryGetValue(abilityId, out IAbility ability))
-                ability.Apply(_abilityActivator);
+                ability.Apply(_activator);
         }
     }
 }

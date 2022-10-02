@@ -7,7 +7,7 @@ namespace Features.AbilitySystem
 {
     internal interface IAbilitiesView
     {
-        void Display(IReadOnlyList<IAbilityItem> abilityItems, Action<string> clicked);
+        void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked);
         void Clear();
     }
 
@@ -22,7 +22,7 @@ namespace Features.AbilitySystem
         private void OnDestroy() => Clear();
 
 
-        public void Display(IReadOnlyList<IAbilityItem> abilityItems, Action<string> clicked)
+        public void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked)
         {
             Clear();
 

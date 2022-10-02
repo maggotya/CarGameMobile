@@ -5,7 +5,9 @@ using UnityEngine;
 using Game.Car;
 using Game.InputLogic;
 using Game.TapeBackground;
+using System.Collections.Generic;
 using Features.AbilitySystem;
+using Features.AbilitySystem.Abilities;
 
 namespace Game
 {
@@ -16,7 +18,7 @@ namespace Game
 
         private readonly CarController _carController;
         private readonly InputGameController _inputGameController;
-        private readonly AbilitiesController _abilitiesController;
+        private readonly IAbilitiesController _abilitiesController;
         private readonly TapeBackgroundController _tapeBackgroundController;
 
 
@@ -59,12 +61,41 @@ namespace Game
             return carController;
         }
 
-        private AbilitiesController CreateAbilitiesController(Transform placeForUi, IAbilityActivator abilityActivator)
+        private IAbilitiesController CreateAbilitiesController(Transform placeForUi, IAbilityActivator abilityActivator)
         {
-            AbilitiesController abilitiesController = new(placeForUi, abilityActivator);
-            AddController(abilitiesController);
+            AbilityItemConfig[] itemConfigs = LoadAbilityItemConfigs();
+            AbilitiesRepository repository = CreateAbilitiesRepository(itemConfigs);
+            AbilitiesView view = LoadAbilitiesView(placeForUi);
 
-            return abilitiesController;
+            AbilitiesController controller = new(view, repository, itemConfigs, abilityActivator);
+            AddController(controller);
+
+            return controller;
+        }
+
+        private AbilityItemConfig[] LoadAbilityItemConfigs()
+        {
+            ResourcePath path = new("Configs/Ability/AbilityItemConfigDataSource");
+            return ContentDataSourceLoader.LoadAbilityItemConfigs(path);
+        }
+
+        private AbilitiesRepository CreateAbilitiesRepository(IEnumerable<IAbilityItem> abilityItemConfigs)
+        {
+            AbilitiesRepository repository = new(abilityItemConfigs);
+            AddRepository(repository);
+
+            return repository;
+        }
+
+        private AbilitiesView LoadAbilitiesView(Transform placeForUi)
+        {
+            var path = new ResourcePath("Prefabs/Ability/AbilitiesView");
+
+            GameObject prefab = ResourcesLoader.LoadPrefab(path);
+            GameObject objectView = Object.Instantiate(prefab, placeForUi, false);
+            AddGameObject(objectView);
+
+            return objectView.GetComponent<AbilitiesView>();
         }
     }
 }
