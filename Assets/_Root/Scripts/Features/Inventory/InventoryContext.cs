@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace Features.Inventory
 {
-    internal class InventoryContext : BaseController
+    internal class InventoryContext : BaseContext
     {
         private static readonly ResourcePath _viewPath = new("Prefabs/Inventory/InventoryView");
         private static readonly ResourcePath _dataSourcePath = new("Configs/Inventory/ItemConfigDataSource");

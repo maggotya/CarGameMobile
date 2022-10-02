@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace Features.AbilitySystem
 {
-    internal class AbilitiesContext : BaseController
+    internal class AbilitiesContext : BaseContext
     {
         private static readonly ResourcePath _dataSourcePath = new("Configs/Ability/AbilityItemConfigDataSource");
         private static readonly ResourcePath _viewPath = new("Prefabs/Ability/AbilitiesView");

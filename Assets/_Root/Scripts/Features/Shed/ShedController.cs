@@ -46,7 +46,7 @@ namespace Features.Shed
         private InventoryContext CreateInventoryContext(Transform placeForUi, IInventoryModel model)
         {
             InventoryContext context = new(placeForUi, model);
-            AddController(context);
+            AddContext(context);
 
             return context;
         }
