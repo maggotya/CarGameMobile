@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Features.Inventory;
-using Features.Inventory.Items;
 using Features.Shed.Upgrade;
 using JetBrains.Annotations;
 using Object = UnityEngine.Object;
@@ -22,7 +21,7 @@ namespace Features.Shed
 
         private readonly ShedView _view;
         private readonly ProfilePlayer _profilePlayer;
-        private readonly InventoryController _inventoryController;
+        private readonly InventoryContext _inventoryContext;
         private readonly UpgradeHandlersRepository _upgradeHandlersRepository;
 
 
@@ -36,13 +35,21 @@ namespace Features.Shed
             _profilePlayer
                 = profilePlayer ?? throw new ArgumentNullException(nameof(profilePlayer));
 
+            _inventoryContext = CreateInventoryContext(placeForUi, _profilePlayer.Inventory);
             _upgradeHandlersRepository = CreateRepository();
-            _inventoryController = CreateInventoryController(placeForUi);
             _view = LoadView(placeForUi);
 
             _view.Init(Apply, Back);
         }
 
+
+        private InventoryContext CreateInventoryContext(Transform placeForUi, IInventoryModel model)
+        {
+            InventoryContext context = new(placeForUi, model);
+            AddController(context);
+
+            return context;
+        }
 
         private UpgradeHandlersRepository CreateRepository()
         {
@@ -60,40 +67,6 @@ namespace Features.Shed
             AddGameObject(objectView);
 
             return objectView.GetComponent<ShedView>();
-        }
-
-        private InventoryController CreateInventoryController(Transform placeForUi)
-        {
-            InventoryView view = LoadInventoryView(placeForUi);
-            InventoryModel model = _profilePlayer.Inventory;
-            ItemsRepository repository = CreateItemsRepository();
-
-            InventoryController controller = new(view, model, repository);
-            AddController(controller);
-
-            return controller;
-        }
-
-        private InventoryView LoadInventoryView(Transform placeForUi)
-        {
-            ResourcePath path = new("Prefabs/Inventory/InventoryView");
-
-            GameObject prefab = ResourcesLoader.LoadPrefab(path);
-            GameObject objectView = Object.Instantiate(prefab, placeForUi);
-            AddGameObject(objectView);
-
-            return objectView.GetComponent<InventoryView>();
-        }
-
-        private ItemsRepository CreateItemsRepository()
-        {
-            ResourcePath path = new("Configs/Inventory/ItemConfigDataSource");
-
-            ItemConfig[] itemConfigs = ContentDataSourceLoader.LoadItemConfigs(path);
-            ItemsRepository repository = new(itemConfigs);
-            AddRepository(repository);
-
-            return repository;
         }
 
 
