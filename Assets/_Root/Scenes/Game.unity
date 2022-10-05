@@ -635,5 +635,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedCar: 15
+  _jumpHeightCar: 2
   _initialState: 1
   _placeForUi: {fileID: 1903552}

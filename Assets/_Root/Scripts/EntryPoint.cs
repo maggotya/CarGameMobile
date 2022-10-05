@@ -5,6 +5,7 @@ internal class EntryPoint : MonoBehaviour
 {
     [Header("Initial Settings")]
     [SerializeField] private float _speedCar;
+    [SerializeField] private float _jumpHeightCar;
     [SerializeField] private GameState _initialState;
 
     [Header("Scene Objects")]
@@ -15,7 +16,7 @@ internal class EntryPoint : MonoBehaviour
 
     private void Start()
     {
-        var profilePlayer = new ProfilePlayer(_speedCar, _initialState);
+        var profilePlayer = new ProfilePlayer(_speedCar, _jumpHeightCar, _initialState);
         _mainController = new MainController(_placeForUi, profilePlayer);
     }
 
