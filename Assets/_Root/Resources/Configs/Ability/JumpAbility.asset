@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4197328e31364c1eb5df3cfdf48fff8a, type: 3}
-  m_Name: AbilityItemConfigDataSource
+  m_Script: {fileID: 11500000, guid: cc7c0900b45e46d4bd60c41ef3e0893a, type: 3}
+  m_Name: JumpAbility
   m_EditorClassIdentifier: 
-  _abilityConfigs:
-  - {fileID: 11400000, guid: 50468f62abfe5414cbb0cbe1092156a2, type: 2}
-  - {fileID: 11400000, guid: abf44921ac1bf40b4a07539f21484d0e, type: 2}
+  _itemConfig: {fileID: 11400000, guid: 7576b349856eb42b0860e543177f3459, type: 2}
+  <Type>k__BackingField: 2
+  <Projectile>k__BackingField: {fileID: 0}
+  <Value>k__BackingField: 0.5

@@ -19,6 +19,7 @@ namespace Features.AbilitySystem
             abilityItem.Type switch
             {
                 AbilityType.Gun => new GunAbility(abilityItem),
+                AbilityType.Jump => new JumpAbility(abilityItem),
                 _ => StubAbility.Default
             };
     }
