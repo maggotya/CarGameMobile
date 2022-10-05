@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,19 +54,34 @@ namespace BattleScripts
             _power = new Power(nameof(Power));
             _power.Attach(_enemy);
 
-            _addMoneyButton.onClick.AddListener(() => ChangeMoney(true));
-            _minusMoneyButton.onClick.AddListener(() => ChangeMoney(false));
+            Subscribe();
+        }
 
-            _addHealthButton.onClick.AddListener(() => ChangeHealth(true));
-            _minusHealthButton.onClick.AddListener(() => ChangeHealth(false));
+        private void OnDestroy()
+        {
+            _money.Detach(_enemy);
+            _heath.Detach(_enemy);
+            _power.Detach(_enemy);
 
-            _addPowerButton.onClick.AddListener(() => ChangePower(true));
-            _minusPowerButton.onClick.AddListener(() => ChangePower(false));
+            Unsubscribe();
+        }
+
+
+        private void Subscribe()
+        {
+            _addMoneyButton.onClick.AddListener(IncreaseMoney);
+            _minusMoneyButton.onClick.AddListener(DecreaseMoney);
+
+            _addHealthButton.onClick.AddListener(IncreaseHealth);
+            _minusHealthButton.onClick.AddListener(DecreaseHealth);
+
+            _addPowerButton.onClick.AddListener(IncreasePower);
+            _minusPowerButton.onClick.AddListener(DecreasePower);
 
             _fightButton.onClick.AddListener(Fight);
         }
 
-        private void OnDestroy()
+        private void Unsubscribe()
         {
             _addMoneyButton.onClick.RemoveAllListeners();
             _minusMoneyButton.onClick.RemoveAllListeners();
@@ -77,70 +93,85 @@ namespace BattleScripts
             _minusPowerButton.onClick.RemoveAllListeners();
 
             _fightButton.onClick.RemoveAllListeners();
-
-            _money.Detach(_enemy);
-            _heath.Detach(_enemy);
-            _power.Detach(_enemy);
         }
 
-        private void ChangeMoney(bool isAddCount)
+
+        private void IncreaseMoney() => IncreaseValue(ref _allCountMoneyPlayer, DataType.Money);
+        private void DecreaseMoney() => DecreaseValue(ref _allCountMoneyPlayer, DataType.Money);
+
+        private void IncreaseHealth() => IncreaseValue(ref _allCountHealthPlayer, DataType.Health);
+        private void DecreaseHealth() => DecreaseValue(ref _allCountHealthPlayer, DataType.Health);
+
+        private void IncreasePower() => IncreaseValue(ref _allCountPowerPlayer, DataType.Power);
+        private void DecreasePower() => DecreaseValue(ref _allCountPowerPlayer, DataType.Power);
+
+        private void IncreaseValue(ref int value, DataType dataType) => AddToValue(ref value, 1, dataType);
+        private void DecreaseValue(ref int value, DataType dataType) => AddToValue(ref value, -1, dataType);
+
+        private void AddToValue(ref int value, int addition, DataType dataType)
         {
-            if (isAddCount)
-                _allCountMoneyPlayer++;
-            else
-                _allCountMoneyPlayer--;
-
-            ChangeDataWindow(_allCountMoneyPlayer, DataType.Money);
+            value += addition;
+            ChangeDataWindow(value, dataType);
         }
 
-        private void ChangeHealth(bool isAddCount)
-        {
-            if (isAddCount)
-                _allCountHealthPlayer++;
-            else
-                _allCountHealthPlayer--;
-
-            ChangeDataWindow(_allCountHealthPlayer, DataType.Health);
-        }
-
-        private void ChangePower(bool isAddCount)
-        {
-            if (isAddCount)
-                _allCountPowerPlayer++;
-            else
-                _allCountPowerPlayer--;
-
-            ChangeDataWindow(_allCountPowerPlayer, DataType.Power);
-        }
-
-        private void Fight()
-        {
-            Debug.Log(_allCountPowerPlayer >= _enemy.CalcPower()
-                ? "<color=#07FF00>Win!!!</color>"
-                : "<color=#FF0000>Lose!!!</color>");
-        }
 
         private void ChangeDataWindow(int countChangeData, DataType dataType)
+        {
+            DataPlayer dataPlayer = GetDataPlayer(dataType);
+            TMP_Text textComponent = GetTextComponent(dataType);
+            string text = $"Player {dataPlayer.TitleData} {countChangeData}";
+
+            textComponent.text = text;
+            UpdateDataPlayer(dataPlayer, countChangeData, dataType);
+
+            int enemyPower = _enemy.CalcPower();
+            _countPowerEnemyText.text = $"Enemy Power {enemyPower}";
+        }
+
+        private TMP_Text GetTextComponent(DataType dataType) =>
+            dataType switch
+            {
+                DataType.Money => _countMoneyText,
+                DataType.Health => _countHealthText,
+                DataType.Power => _countPowerText,
+                _ => throw new ArgumentException($"Wrong {nameof(DataType)}")
+            };
+
+        private DataPlayer GetDataPlayer(DataType dataType) =>
+            dataType switch
+            {
+                DataType.Money => _money,
+                DataType.Health => _heath,
+                DataType.Power => _power,
+                _ => throw new ArgumentException($"Wrong {nameof(DataType)}")
+            };
+
+        private void UpdateDataPlayer(DataPlayer dataPlayer, int value, DataType dataType)
         {
             switch (dataType)
             {
                 case DataType.Money:
-                    _countMoneyText.text = $"Player Money {countChangeData.ToString()}";
-                    _money.Money = countChangeData;
+                    dataPlayer.Money = value;
                     break;
-
                 case DataType.Health:
-                    _countHealthText.text = $"Player Health {countChangeData.ToString()}";
-                    _heath.Health = countChangeData;
+                    dataPlayer.Health = value;
                     break;
-
                 case DataType.Power:
-                    _countPowerText.text = $"Player Power {countChangeData.ToString()}";
-                    _power.Power = countChangeData;
+                    dataPlayer.Power = value;
                     break;
+                default:
+                    throw new ArgumentException($"Wrong {nameof(DataType)}");
             }
+        }
 
-            _countPowerEnemyText.text = $"Enemy Power {_enemy.CalcPower()}";
+
+        private void Fight()
+        {
+            bool isVictory = _allCountPowerPlayer >= _enemy.CalcPower();
+            string message = isVictory ? "Win!!!" : "Lose!!!";
+            string color = isVictory ? "#07FF00" : "#FF0000";
+
+            Debug.Log($"<color={color}>{message}</color>");
         }
     }
 }
