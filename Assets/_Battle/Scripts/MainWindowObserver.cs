@@ -34,9 +34,9 @@ namespace BattleScripts
         private int _allCountHealthPlayer;
         private int _allCountPowerPlayer;
 
-        private Money _money;
-        private Health _heath;
-        private Power _power;
+        private DataPlayer _money;
+        private DataPlayer _heath;
+        private DataPlayer _power;
 
         private Enemy _enemy;
 
@@ -45,25 +45,35 @@ namespace BattleScripts
         {
             _enemy = new Enemy("Enemy Flappy");
 
-            _money = new Money(nameof(Money));
-            _money.Attach(_enemy);
-
-            _heath = new Health(nameof(Health));
-            _heath.Attach(_enemy);
-
-            _power = new Power(nameof(Power));
-            _power.Attach(_enemy);
+            _money = CreateDataPlayer(DataType.Money);
+            _heath = CreateDataPlayer(DataType.Health);
+            _power = CreateDataPlayer(DataType.Power);
 
             Subscribe();
         }
 
         private void OnDestroy()
         {
-            _money.Detach(_enemy);
-            _heath.Detach(_enemy);
-            _power.Detach(_enemy);
+            DisposeDataPlayer(ref _money);
+            DisposeDataPlayer(ref _heath);
+            DisposeDataPlayer(ref _power);
 
             Unsubscribe();
+        }
+
+
+        private DataPlayer CreateDataPlayer(DataType dataType)
+        {
+            DataPlayer dataPlayer = new(dataType);
+            dataPlayer.Attach(_enemy);
+
+            return dataPlayer;
+        }
+
+        private void DisposeDataPlayer(ref DataPlayer dataPlayer)
+        {
+            dataPlayer.Detach(_enemy);
+            dataPlayer = null;
         }
 
 
@@ -119,10 +129,10 @@ namespace BattleScripts
         {
             DataPlayer dataPlayer = GetDataPlayer(dataType);
             TMP_Text textComponent = GetTextComponent(dataType);
-            string text = $"Player {dataPlayer.TitleData} {countChangeData}";
+            string text = $"Player {dataType:F} {countChangeData}";
 
+            dataPlayer.Value = countChangeData;
             textComponent.text = text;
-            UpdateDataPlayer(dataPlayer, countChangeData, dataType);
 
             int enemyPower = _enemy.CalcPower();
             _countPowerEnemyText.text = $"Enemy Power {enemyPower}";
@@ -146,32 +156,16 @@ namespace BattleScripts
                 _ => throw new ArgumentException($"Wrong {nameof(DataType)}")
             };
 
-        private void UpdateDataPlayer(DataPlayer dataPlayer, int value, DataType dataType)
-        {
-            switch (dataType)
-            {
-                case DataType.Money:
-                    dataPlayer.Money = value;
-                    break;
-                case DataType.Health:
-                    dataPlayer.Health = value;
-                    break;
-                case DataType.Power:
-                    dataPlayer.Power = value;
-                    break;
-                default:
-                    throw new ArgumentException($"Wrong {nameof(DataType)}");
-            }
-        }
-
 
         private void Fight()
         {
-            bool isVictory = _allCountPowerPlayer >= _enemy.CalcPower();
-            string message = isVictory ? "Win!!!" : "Lose!!!";
-            string color = isVictory ? "#07FF00" : "#FF0000";
+            int enemyPower = _enemy.CalcPower();
+            bool isVictory = _allCountPowerPlayer >= enemyPower;
 
-            Debug.Log($"<color={color}>{message}</color>");
+            string color = isVictory ? "#07FF00" : "#FF0000";
+            string message = isVictory ? "Win" : "Lose";
+
+            Debug.Log($"<color={color}>{message}!!!</color>");
         }
     }
 }

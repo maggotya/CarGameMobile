@@ -2,38 +2,23 @@ using System.Collections.Generic;
 
 namespace BattleScripts
 {
-    internal abstract class DataPlayer
+    internal class DataPlayer
     {
         private readonly List<IEnemy> _enemies;
+        private int _value;
 
-        private int _countMoney;
-        private int _countHealth;
-        private int _countPower;
+        public DataType DataType { get; }
 
-        public string TitleData { get; }
-
-        public int Money
+        public int Value
         {
-            get => _countMoney;
-            set => SetValue(DataType.Money, value);
-        }
-
-        public int Health
-        {
-            get => _countHealth;
-            set => SetValue(DataType.Health, value);
-        }
-
-        public int Power
-        {
-            get => _countPower;
-            set => SetValue(DataType.Power, value);
+            get => _value;
+            set => SetValue(value);
         }
 
 
-        protected DataPlayer(string titleData)
+        public DataPlayer(DataType dataType)
         {
-            TitleData = titleData;
+            DataType = dataType;
             _enemies = new List<IEnemy>();
         }
 
@@ -41,42 +26,20 @@ namespace BattleScripts
         public void Attach(IEnemy enemy) => _enemies.Add(enemy);
         public void Detach(IEnemy enemy) => _enemies.Remove(enemy);
 
-        protected void Notify(DataType dataType)
+        protected void Notify()
         {
             foreach (var investor in _enemies)
-                investor.Update(this, dataType);
+                investor.Update(this);
         }
 
 
-        private void SetValue(DataType dataType, int value)
+        private void SetValue(int value)
         {
-            int currentValue = GetValue(dataType);
-            if (currentValue == value)
+            if (_value == value)
                 return;
 
-            switch (dataType)
-            {
-                case DataType.Money:
-                    _countMoney = value;
-                    break;
-                case DataType.Health:
-                    _countHealth = value;
-                    break;
-                case DataType.Power:
-                    _countPower = value;
-                    break;
-            }
-
-            Notify(dataType);
+            _value = value;
+            Notify();
         }
-
-        private int GetValue(DataType dataType) =>
-            dataType switch
-            {
-                DataType.Money => _countMoney,
-                DataType.Health => _countHealth,
-                DataType.Power => _countPower,
-                _ => default
-            };
     }
 }
