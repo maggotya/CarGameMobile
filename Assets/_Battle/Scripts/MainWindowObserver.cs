@@ -14,9 +14,9 @@ namespace BattleScripts
         [Header("Enemy Stats")]
         [SerializeField] private TMP_Text _countPowerEnemyText;
 
-        [Header("Coin Buttons")]
-        [SerializeField] private Button _addCoinsButton;
-        [SerializeField] private Button _minusCoinsButton;
+        [Header("Money Buttons")]
+        [SerializeField] private Button _addMoneyButton;
+        [SerializeField] private Button _minusMoneyButton;
 
         [Header("Health Buttons")]
         [SerializeField] private Button _addHealthButton;
@@ -53,8 +53,8 @@ namespace BattleScripts
             _power = new Power(nameof(Power));
             _power.Attach(_enemy);
 
-            _addCoinsButton.onClick.AddListener(() => ChangeMoney(true));
-            _minusCoinsButton.onClick.AddListener(() => ChangeMoney(false));
+            _addMoneyButton.onClick.AddListener(() => ChangeMoney(true));
+            _minusMoneyButton.onClick.AddListener(() => ChangeMoney(false));
 
             _addHealthButton.onClick.AddListener(() => ChangeHealth(true));
             _minusHealthButton.onClick.AddListener(() => ChangeHealth(false));
@@ -67,8 +67,8 @@ namespace BattleScripts
 
         private void OnDestroy()
         {
-            _addCoinsButton.onClick.RemoveAllListeners();
-            _minusCoinsButton.onClick.RemoveAllListeners();
+            _addMoneyButton.onClick.RemoveAllListeners();
+            _minusMoneyButton.onClick.RemoveAllListeners();
 
             _addHealthButton.onClick.RemoveAllListeners();
             _minusHealthButton.onClick.RemoveAllListeners();
@@ -92,7 +92,7 @@ namespace BattleScripts
 
             ChangeDataWindow(_allCountMoneyPlayer, DataType.Money);
         }
- 
+
         private void ChangeHealth(bool isAddCount)
         {
             if (isAddCount)
@@ -102,7 +102,7 @@ namespace BattleScripts
 
             ChangeDataWindow(_allCountHealthPlayer, DataType.Health);
         }
- 
+
         private void ChangePower(bool isAddCount)
         {
             if (isAddCount)

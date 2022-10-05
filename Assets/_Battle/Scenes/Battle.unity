@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 117741261}
   m_Layer: 5
-  m_Name: EnemyDataInfo
+  m_Name: EnemyStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 458320406}
   - component: {fileID: 458320405}
   m_Layer: 5
-  m_Name: PlayerDataInfo
+  m_Name: PlayerStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1700,7 +1700,7 @@ GameObject:
   - component: {fileID: 853870313}
   - component: {fileID: 853870312}
   m_Layer: 5
-  m_Name: Coins
+  m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1856,8 +1856,8 @@ MonoBehaviour:
   _countHealthText: {fileID: 242544580}
   _countPowerText: {fileID: 1354862192}
   _countPowerEnemyText: {fileID: 750541711}
-  _addCoinsButton: {fileID: 1953927038}
-  _minusCoinsButton: {fileID: 1542493078}
+  _addMoneyButton: {fileID: 1953927038}
+  _minusMoneyButton: {fileID: 1542493078}
   _addHealthButton: {fileID: 1471403981}
   _minusHealthButton: {fileID: 654811292}
   _addPowerButton: {fileID: 792547950}
@@ -2178,7 +2178,7 @@ GameObject:
   - component: {fileID: 1264169131}
   - component: {fileID: 1264169132}
   m_Layer: 5
-  m_Name: CoinButtons
+  m_Name: MoneyButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2602,7 +2602,7 @@ GameObject:
   - component: {fileID: 1542493077}
   - component: {fileID: 1542493078}
   m_Layer: 5
-  m_Name: MinusCoins
+  m_Name: MinusMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3382,7 +3382,7 @@ GameObject:
   - component: {fileID: 1953927037}
   - component: {fileID: 1953927038}
   m_Layer: 5
-  m_Name: AddCoins
+  m_Name: AddMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
