@@ -30,9 +30,9 @@ namespace BattleScripts
         [Header("Other Buttons")]
         [SerializeField] private Button _fightButton;
 
-        private DataPlayer _money;
-        private DataPlayer _heath;
-        private DataPlayer _power;
+        private PlayerData _money;
+        private PlayerData _heath;
+        private PlayerData _power;
 
         private Enemy _enemy;
 
@@ -41,35 +41,35 @@ namespace BattleScripts
         {
             _enemy = new Enemy("Enemy Flappy");
 
-            _money = CreateDataPlayer(DataType.Money);
-            _heath = CreateDataPlayer(DataType.Health);
-            _power = CreateDataPlayer(DataType.Power);
+            _money = CreatePlayerData(DataType.Money);
+            _heath = CreatePlayerData(DataType.Health);
+            _power = CreatePlayerData(DataType.Power);
 
             Subscribe();
         }
 
         private void OnDestroy()
         {
-            DisposeDataPlayer(ref _money);
-            DisposeDataPlayer(ref _heath);
-            DisposeDataPlayer(ref _power);
+            DisposePlayerData(ref _money);
+            DisposePlayerData(ref _heath);
+            DisposePlayerData(ref _power);
 
             Unsubscribe();
         }
 
 
-        private DataPlayer CreateDataPlayer(DataType dataType)
+        private PlayerData CreatePlayerData(DataType dataType)
         {
-            DataPlayer dataPlayer = new(dataType);
-            dataPlayer.Attach(_enemy);
+            PlayerData playerData = new(dataType);
+            playerData.Attach(_enemy);
 
-            return dataPlayer;
+            return playerData;
         }
 
-        private void DisposeDataPlayer(ref DataPlayer dataPlayer)
+        private void DisposePlayerData(ref PlayerData playerData)
         {
-            dataPlayer.Detach(_enemy);
-            dataPlayer = null;
+            playerData.Detach(_enemy);
+            playerData = null;
         }
 
 
@@ -111,20 +111,20 @@ namespace BattleScripts
         private void IncreasePower() => IncreaseValue(_power);
         private void DecreasePower() => DecreaseValue(_power);
 
-        private void IncreaseValue(DataPlayer dataPlayer) => AddToValue(1, dataPlayer);
-        private void DecreaseValue(DataPlayer dataPlayer) => AddToValue(-1, dataPlayer);
+        private void IncreaseValue(PlayerData playerData) => AddToValue(1, playerData);
+        private void DecreaseValue(PlayerData playerData) => AddToValue(-1, playerData);
 
-        private void AddToValue(int addition, DataPlayer dataPlayer)
+        private void AddToValue(int addition, PlayerData playerData)
         {
-            dataPlayer.Value += addition;
-            ChangeDataWindow(dataPlayer);
+            playerData.Value += addition;
+            ChangeDataWindow(playerData);
         }
 
 
-        private void ChangeDataWindow(DataPlayer dataPlayer)
+        private void ChangeDataWindow(PlayerData playerData)
         {
-            int value = dataPlayer.Value;
-            DataType dataType = dataPlayer.DataType;
+            int value = playerData.Value;
+            DataType dataType = playerData.DataType;
             TMP_Text textComponent = GetTextComponent(dataType);
             textComponent.text = $"Player {dataType:F} {value}";
 

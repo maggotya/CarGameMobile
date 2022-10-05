@@ -4,7 +4,7 @@ namespace BattleScripts
 {
     internal interface IEnemy
     {
-        void Update(DataPlayer dataPlayer);
+        void Update(PlayerData playerData);
     }
 
     internal class Enemy : IEnemy
@@ -24,24 +24,24 @@ namespace BattleScripts
             _name = name;
 
 
-        public void Update(DataPlayer dataPlayer)
+        public void Update(PlayerData playerData)
         {
-            switch (dataPlayer.DataType)
+            switch (playerData.DataType)
             {
                 case DataType.Money:
-                    _moneyPlayer = dataPlayer.Value;
+                    _moneyPlayer = playerData.Value;
                     break;
 
                 case DataType.Health:
-                    _healthPlayer = dataPlayer.Value;
+                    _healthPlayer = playerData.Value;
                     break;
 
                 case DataType.Power:
-                    _powerPlayer = dataPlayer.Value;
+                    _powerPlayer = playerData.Value;
                     break;
             }
 
-            Debug.Log($"Notified {_name} change to {dataPlayer.DataType:F}");
+            Debug.Log($"Notified {_name} change to {playerData.DataType:F}");
         }
 
         public int CalcPower()
