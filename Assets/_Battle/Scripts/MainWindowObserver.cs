@@ -115,7 +115,7 @@ namespace BattleScripts
 
         private void Fight()
         {
-            Debug.Log(_allCountPowerPlayer >= _enemy.Power
+            Debug.Log(_allCountPowerPlayer >= _enemy.CalcPower()
                 ? "<color=#07FF00>Win!!!</color>"
                 : "<color=#FF0000>Lose!!!</color>");
         }
@@ -140,7 +140,7 @@ namespace BattleScripts
                     break;
             }
 
-            _countPowerEnemyText.text = $"Enemy Power {_enemy.Power}";
+            _countPowerEnemyText.text = $"Enemy Power {_enemy.CalcPower()}";
         }
     }
 }
