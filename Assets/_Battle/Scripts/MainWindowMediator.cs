@@ -34,6 +34,7 @@ namespace BattleScripts
 
         [Header("Other Buttons")]
         [SerializeField] private Button _fightButton;
+        [SerializeField] private Button _escapeButton;
 
         private PlayerData _money;
         private PlayerData _heath;
@@ -96,6 +97,7 @@ namespace BattleScripts
             _minusCrimeButton.onClick.AddListener(DecreaseCrime);
 
             _fightButton.onClick.AddListener(Fight);
+            _escapeButton.onClick.AddListener(Escape);
         }
 
         private void Unsubscribe()
@@ -113,6 +115,7 @@ namespace BattleScripts
             _minusCrimeButton.onClick.RemoveAllListeners();
 
             _fightButton.onClick.RemoveAllListeners();
+            _escapeButton.onClick.RemoveAllListeners();
         }
 
 
@@ -135,6 +138,7 @@ namespace BattleScripts
         {
             playerData.Value += addition;
             ChangeDataWindow(playerData);
+            UpdateEscapeButtonVisibility();
         }
 
 
@@ -160,6 +164,21 @@ namespace BattleScripts
             };
 
 
+        private void UpdateEscapeButtonVisibility()
+        {
+            const int minCrimeToUse = 0;
+            const int maxCrimeToUse = 2;
+            const int minCrimeToShow = 0;
+            const int maxCrimeToShow = 5;
+
+            int crimeValue = _crime.Value;
+            bool canUse = minCrimeToUse <= crimeValue && crimeValue <= maxCrimeToUse;
+            bool canShow = minCrimeToShow <= crimeValue && crimeValue <= maxCrimeToShow;
+
+            _escapeButton.interactable = canUse;
+            _escapeButton.gameObject.SetActive(canShow);
+        }
+
         private void Fight()
         {
             int enemyPower = _enemy.CalcPower();
@@ -167,6 +186,14 @@ namespace BattleScripts
 
             string color = isVictory ? "#07FF00" : "#FF0000";
             string message = isVictory ? "Win" : "Lose";
+
+            Debug.Log($"<color={color}>{message}!!!</color>");
+        }
+
+        private void Escape()
+        {
+            string color = "#FFB202";
+            string message = "Escaped";
 
             Debug.Log($"<color={color}>{message}!!!</color>");
         }
