@@ -10,7 +10,9 @@ namespace BattleScripts
     internal class Enemy : IEnemy
     {
         private const float KMoney = 5f;
-        private const float KPower = 1.5f;
+        private const float KHealth = 7f;
+        private const float KPower = 5f;
+        private const float KSummary = 0.2f;
         private const float MaxHealthPlayer = 20;
 
         private readonly string _name;
@@ -44,17 +46,15 @@ namespace BattleScripts
             Debug.Log($"Notified {_name} change to {playerData.DataType:F}");
         }
 
+
         public int CalcPower()
         {
-            int kHealth = CalcKHealth();
             float moneyRatio = _moneyPlayer / KMoney;
+            float healthRatio = _healthPlayer / KHealth;
             float powerRatio = _powerPlayer / KPower;
+            float summaryRatio = moneyRatio + healthRatio + powerRatio;
 
-            return (int)(moneyRatio + kHealth + powerRatio);
+            return (int)(summaryRatio * KSummary * MaxHealthPlayer);
         }
-
-
-        private int CalcKHealth() =>
-            _healthPlayer > MaxHealthPlayer ? 100 : 5;
     }
 }
