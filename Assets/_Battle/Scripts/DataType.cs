@@ -4,6 +4,7 @@ namespace BattleScripts
     {
         Money,
         Health,
-        Power
+        Power,
+        Crime
     }
 }
