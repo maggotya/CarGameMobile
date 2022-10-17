@@ -4522,24 +4522,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 7675662945313443482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70bd00a4ca4143e48e7003ff0ff20f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: dbc6f3d3e5d9e4aaa99021318351599e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countMoneyText: {fileID: 5097040939215600945}
-  _countHealthText: {fileID: 5097040939407397917}
-  _countPowerText: {fileID: 5097040940794983849}
-  _countCrimeText: {fileID: 5097040939188482266}
-  _countPowerEnemyText: {fileID: 5097040938850115670}
-  _addMoneyButton: {fileID: 5097040940313490599}
-  _minusMoneyButton: {fileID: 5097040940674328655}
-  _addHealthButton: {fileID: 5097040940880063508}
-  _minusHealthButton: {fileID: 5097040938995489605}
-  _addPowerButton: {fileID: 5097040938858572215}
-  _minusPowerButton: {fileID: 5097040939783249259}
-  _addCrimeButton: {fileID: 5097040939350699422}
-  _minusCrimeButton: {fileID: 5097040940235434322}
-  _fightButton: {fileID: 5097040939168352370}
-  _escapeButton: {fileID: 5097040939598812056}
+  <CountMoneyText>k__BackingField: {fileID: 5097040939215600945}
+  <CountHealthText>k__BackingField: {fileID: 5097040939407397917}
+  <CountPowerText>k__BackingField: {fileID: 5097040940794983849}
+  <CountCrimeText>k__BackingField: {fileID: 5097040939188482266}
+  <CountPowerEnemyText>k__BackingField: {fileID: 5097040938850115670}
+  <AddMoneyButton>k__BackingField: {fileID: 5097040940313490599}
+  <MinusMoneyButton>k__BackingField: {fileID: 5097040940674328655}
+  <AddHealthButton>k__BackingField: {fileID: 5097040940880063508}
+  <MinusHealthButton>k__BackingField: {fileID: 5097040938995489605}
+  <AddPowerButton>k__BackingField: {fileID: 5097040938858572215}
+  <MinusPowerButton>k__BackingField: {fileID: 5097040939783249259}
+  <AddCrimeButton>k__BackingField: {fileID: 5097040939350699422}
+  <MinusCrimeButton>k__BackingField: {fileID: 5097040940235434322}
+  <FightButton>k__BackingField: {fileID: 5097040939168352370}
+  <EscapeButton>k__BackingField: {fileID: 5097040939598812056}
 --- !u!1 &8141184493212461491
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ internal class MainController : BaseController
     private SettingsMenuController _settingsMenuController;
     private RewardController _rewardController;
     private StartFightController _startFightController;
+    private FightController _fightController;
     private GameController _gameController;
 
     private ShedContext _shedContext;
@@ -58,6 +59,9 @@ internal class MainController : BaseController
                 _gameController = new GameController(_placeForUi, _profilePlayer);
                 _startFightController = new StartFightController(_placeForUi, _profilePlayer);
                 break;
+            case GameState.Fight:
+                _fightController = new FightController(_placeForUi, _profilePlayer);
+                break;
         }
     }
 
@@ -67,6 +71,7 @@ internal class MainController : BaseController
         _settingsMenuController?.Dispose();
         _rewardController?.Dispose();
         _startFightController?.Dispose();
+        _fightController?.Dispose();
         _gameController?.Dispose();
 
         _shedContext?.Dispose();
