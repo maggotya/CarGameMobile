@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace Tool.Tween
 {
+    [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(RectTransform))]
     public class CustomButtonByInheritance : Button
     {
@@ -12,6 +13,7 @@ namespace Tool.Tween
         public static string CurveEaseName => nameof(_curveEase);
         public static string DurationName => nameof(_duration);
 
+        [SerializeField] private AudioSource _audioSource;
         [SerializeField] private RectTransform _rectTransform;
 
         [SerializeField] private AnimationButtonType _animationButtonType = AnimationButtonType.ChangePosition;
@@ -23,23 +25,24 @@ namespace Tool.Tween
         protected override void Awake()
         {
             base.Awake();
-            InitRectTransform();
+            InitComponents();
         }
 
-        protected override void OnValidate()
+        protected new void OnValidate() =>
+            InitComponents();
+
+        private void InitComponents()
         {
-            base.OnValidate();
-            InitRectTransform();
-        }
-
-        private void InitRectTransform() =>
+            _audioSource ??= GetComponent<AudioSource>();
             _rectTransform ??= GetComponent<RectTransform>();
+        }
 
 
         public override void OnPointerClick(PointerEventData eventData)
         {
             base.OnPointerClick(eventData);
             ActivateAnimation();
+            ActivateSound();
         }
 
 
@@ -55,6 +58,11 @@ namespace Tool.Tween
                     _rectTransform.DOShakeAnchorPos(_duration, Vector2.one * _strength).SetEase(_curveEase);
                     break;
             }
+        }
+
+        private void ActivateSound()
+        {
+            _audioSource.Play();
         }
     }
 }
