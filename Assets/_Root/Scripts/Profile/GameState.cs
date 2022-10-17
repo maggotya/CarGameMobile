@@ -7,6 +7,7 @@ namespace Profile
         Settings,
         Shed,
         DailyReward,
-        Game
+        Game,
+        Fight
     }
 }
