@@ -17,7 +17,7 @@ namespace Ui
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, OpenSettings, OpenShed, PlayRewardedAds, BuyProduct, OpenDailyReward);
+            _view.Init(StartGame, OpenSettings, OpenShed, PlayRewardedAds, BuyProduct, OpenDailyReward, ExitGame);
 
             SubscribeAds();
             SubscribeIAP();
@@ -56,6 +56,14 @@ namespace Ui
 
         private void OpenDailyReward() =>
             _profilePlayer.CurrentState.Value = GameState.DailyReward;
+
+        private void ExitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            Application.Quit();
+        }
 
         private void SubscribeAds()
         {

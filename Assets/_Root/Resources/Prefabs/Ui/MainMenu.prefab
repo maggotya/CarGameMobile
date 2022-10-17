@@ -2201,6 +2201,7 @@ MonoBehaviour:
   _buttonDailyReward: {fileID: 6057769820315644180}
   _buttonAdsReward: {fileID: 5608503817596840365}
   _buttonBuyProduct: {fileID: 4012727613815735783}
+  _exitGame: {fileID: 871876899705815074}
 --- !u!1 &6221595884795600595
 GameObject:
   m_ObjectHideFlags: 0
