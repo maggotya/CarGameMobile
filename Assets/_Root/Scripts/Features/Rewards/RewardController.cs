@@ -27,7 +27,7 @@ namespace Features.Rewards
         {
             _view = LoadView(placeForUi);
             _profilePlayer = profilePlayer;
-            _currencyController = CreateCurrencyController(placeForUi);
+            _currencyController = CreateCurrencyController(placeForUi, profilePlayer.Currency);
 
             InitView();
         }
@@ -48,9 +48,9 @@ namespace Features.Rewards
             return objectView.GetComponent<RewardView>();
         }
 
-        private CurrencyController CreateCurrencyController(Transform placeForUi)
+        private CurrencyController CreateCurrencyController(Transform placeForUi, CurrencyModel currencyModel)
         {
-            CurrencyController currencyController = new(placeForUi);
+            CurrencyController currencyController = new(currencyModel, placeForUi);
             AddController(currencyController);
 
             return currencyController;
@@ -150,10 +150,10 @@ namespace Features.Rewards
             switch (reward.RewardType)
             {
                 case RewardType.Wood:
-                    _currencyController.AddWood(reward.CountCurrency);
+                    _profilePlayer.Currency.Wood += reward.CountCurrency;
                     break;
                 case RewardType.Diamond:
-                    _currencyController.AddDiamond(reward.CountCurrency);
+                    _profilePlayer.Currency.Diamond += reward.CountCurrency;
                     break;
             }
 

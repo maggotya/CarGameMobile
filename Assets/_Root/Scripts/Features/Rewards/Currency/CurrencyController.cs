@@ -5,30 +5,27 @@ namespace Features.Rewards.Currency
 {
     internal class CurrencyController : BaseController
     {
-        private const string WoodKey = nameof(WoodKey);
-        private const string DiamondKey = nameof(DiamondKey);
-
         private readonly ResourcePath _resourcePath = new("Prefabs/Rewards/CurrencyView");
+        private readonly CurrencyModel _model;
         private readonly CurrencyView _view;
 
-        private int Wood
-        {
-            get => PlayerPrefs.GetInt(WoodKey, 0);
-            set => PlayerPrefs.SetInt(WoodKey, value);
-        }
 
-        private int Diamond
+        public CurrencyController(CurrencyModel currencyModel, Transform placeForUi)
         {
-            get => PlayerPrefs.GetInt(DiamondKey, 0);
-            set => PlayerPrefs.SetInt(DiamondKey, value);
-        }
+            _model = currencyModel;
 
-
-        public CurrencyController(Transform placeForUi)
-        {
             _view = LoadView(placeForUi);
-            _view.Init(Wood, Diamond);
+            _view.Init(_model.Wood, _model.Diamond);
+
+            Subscribe(_model);
         }
+
+        protected override void OnDispose()
+        {
+            Unsubscribe(_model);
+            base.OnDispose();
+        }
+
 
         private CurrencyView LoadView(Transform placeForUi)
         {
@@ -40,16 +37,19 @@ namespace Features.Rewards.Currency
         }
 
 
-        public void AddWood(int value)
+        private void Subscribe(CurrencyModel model)
         {
-            Wood += value;
-            _view.SetWood(Wood);
+            model.WoodChanged += OnWoodChanged;
+            model.DiamondChanged += OnDiamondChanged;
         }
 
-        public void AddDiamond(int value)
+        private void Unsubscribe(CurrencyModel model)
         {
-            Diamond += value;
-            _view.SetDiamond(Diamond);
+            model.WoodChanged -= OnWoodChanged;
+            model.DiamondChanged -= OnDiamondChanged;
         }
+
+        private void OnWoodChanged() => _view.SetWood(_model.Wood);
+        private void OnDiamondChanged() => _view.SetDiamond(_model.Diamond);
     }
 }
