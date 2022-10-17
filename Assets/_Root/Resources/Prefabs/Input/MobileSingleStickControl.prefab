@@ -30,6 +30,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2722414625679200706}
   m_Father: {fileID: 2722414625679200708}
@@ -165,6 +166,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2722414625679200704}
   m_RootOrder: 0
@@ -263,6 +265,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2722414625679200704}
   - {fileID: 2722414625679200710}
@@ -292,6 +295,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -348,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ca1b58ca454364ba7f79d806ec973e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputMultiplier: 10
 --- !u!114 &449385258921805012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +367,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystick: {fileID: 2722414625681829516}
   _container: {fileID: 6992499268536425143}
+  _enabledAlpha: 1
+  _disabledAlpha: 0
+  _inputMultiplier: 10
 --- !u!1 &2722414625692556134
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +399,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2722414625679200708}
   m_RootOrder: 1
