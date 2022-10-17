@@ -4,18 +4,18 @@ namespace Rewards
 {
     internal class InstallView : MonoBehaviour
     {
-        [SerializeField] private DailyRewardView _dailyRewardView;
+        [SerializeField] private RewardView rewardView;
 
-        private DailyRewardController _dailyRewardController;
+        private RewardController _rewardController;
 
 
         private void Awake() =>
-            _dailyRewardController = new DailyRewardController(_dailyRewardView);
+            _rewardController = new RewardController(rewardView);
 
         private void Start() =>
-            _dailyRewardController.Init();
+            _rewardController.Init();
 
         private void OnDestroy() =>
-            _dailyRewardController.Deinit();
+            _rewardController.Deinit();
     }
 }

@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Rewards.Currency;
+using Rewards.Slot;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Rewards
 {
-    internal class DailyRewardController
+    internal class RewardController
     {
-        private readonly DailyRewardView _view;
+        private readonly RewardView _view;
 
         private List<ContainerSlotRewardView> _slots;
         private Coroutine _coroutine;
@@ -17,7 +19,7 @@ namespace Rewards
         private bool _isInitialized;
 
 
-        public DailyRewardController(DailyRewardView view) =>
+        public RewardController(RewardView view) =>
             _view = view;
 
 

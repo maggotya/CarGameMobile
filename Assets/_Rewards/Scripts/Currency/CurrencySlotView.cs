@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Rewards
+namespace Rewards.Currency
 {
     internal class CurrencySlotView : MonoBehaviour
     {

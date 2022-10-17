@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Rewards
+namespace Rewards.Currency
 {
     internal class CurrencyView : MonoBehaviour
     {

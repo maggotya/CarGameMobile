@@ -1195,6 +1195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063f1b92edbd4b8c812689152aa9dc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentSlotInActiveKey: CurrentSlotInActiveKey
+  TimeGetRewardKey: TimeGetRewardKey
   <TimeCooldown>k__BackingField: 86400
   <TimeDeadline>k__BackingField: 259200
   <Rewards>k__BackingField:
@@ -1241,7 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460e3fff037c43aeb983aec15c1df2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dailyRewardView: {fileID: 1534277131}
+  rewardView: {fileID: 1534277131}
 --- !u!4 &1791544986
 Transform:
   m_ObjectHideFlags: 0

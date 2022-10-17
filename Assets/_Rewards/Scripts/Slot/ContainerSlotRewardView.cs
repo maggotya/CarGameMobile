@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Rewards
+namespace Rewards.Slot
 {
     internal class ContainerSlotRewardView : MonoBehaviour
     {

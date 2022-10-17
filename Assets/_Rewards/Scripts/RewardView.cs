@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Rewards.Slot;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Rewards
 {
-    internal class DailyRewardView : MonoBehaviour
+    internal class RewardView : MonoBehaviour
     {
         private const string CurrentSlotInActiveKey = nameof(CurrentSlotInActiveKey);
         private const string TimeGetRewardKey = nameof(TimeGetRewardKey);
