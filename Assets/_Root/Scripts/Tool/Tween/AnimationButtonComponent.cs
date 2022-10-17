@@ -5,13 +5,11 @@ using UnityEngine.UI;
 namespace Tool.Tween
 {
     [RequireComponent(typeof(Button))]
-    [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(RectTransform))]
-    public class CustomButtonByComposition : MonoBehaviour
+    public class AnimationButtonComponent : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] private Button _button;
-        [SerializeField] private AudioSource _audioSource;
         [SerializeField] private RectTransform _rectTransform;
 
         [Header("Settings")]
@@ -26,24 +24,13 @@ namespace Tool.Tween
         private void InitComponents()
         {
             _button ??= GetComponent<Button>();
-            _audioSource ??= GetComponent<AudioSource>();
             _rectTransform ??= GetComponent<RectTransform>();
         }
 
         private void Start() => _button.onClick.AddListener(OnButtonClick);
         private void OnDestroy() => _button.onClick.RemoveAllListeners();
+        private void OnButtonClick() => ActivateAnimation();
 
-
-        private void OnButtonClick()
-        {
-            ActivateSound();
-            ActivateAnimation();
-        }
-
-        private void ActivateSound()
-        {
-            _audioSource.Play();
-        }
 
         private void ActivateAnimation()
         {

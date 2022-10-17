@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 namespace Tween.Editor
 {
-    [CustomEditor(typeof(CustomButtonByInheritance))]
-    internal class CustomButtonEditor : ButtonEditor
+    [CustomEditor(typeof(CustomButton_Obsolete))]
+    internal class CustomButtonEditor_Obsolete : ButtonEditor
     {
         private SerializedProperty m_InteractableProperty;
 
@@ -21,9 +21,9 @@ namespace Tween.Editor
         {
             VisualElement root = new();
 
-            PropertyField animationType = new(serializedObject.FindProperty(CustomButtonByInheritance.AnimationTypeName));
-            PropertyField curveEase = new(serializedObject.FindProperty(CustomButtonByInheritance.CurveEaseName));
-            PropertyField duration = new(serializedObject.FindProperty(CustomButtonByInheritance.DurationName));
+            PropertyField animationType = new(serializedObject.FindProperty(CustomButton_Obsolete.AnimationTypeName));
+            PropertyField curveEase = new(serializedObject.FindProperty(CustomButton_Obsolete.CurveEaseName));
+            PropertyField duration = new(serializedObject.FindProperty(CustomButton_Obsolete.DurationName));
 
             Label tweenLabel = new("Settings Tween");
             Label intractableLabel = new("Interactable");

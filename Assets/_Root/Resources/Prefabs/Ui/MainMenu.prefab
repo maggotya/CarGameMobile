@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 5681381967209787482}
   - component: {fileID: 6057769820315644180}
   - component: {fileID: 3694996525397083537}
+  - component: {fileID: 1018481598779622869}
   - component: {fileID: 6187104521848169532}
   m_Layer: 5
   m_Name: DailyReward
@@ -309,12 +310,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 6057769820315644180}
-  _audioSource: {fileID: 6187104521848169532}
   _rectTransform: {fileID: 5681381967209787482}
   _animationButtonType: 2
   _curveEase: 1
   _duration: 0.6
   _strength: 30
+--- !u!114 &1018481598779622869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825132258204156803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22aa2db73bc342348838c026924733b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 6057769820315644180}
+  _audioSource: {fileID: 6187104521848169532}
 --- !u!82 &6187104521848169532
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1041,6 +1055,7 @@ GameObject:
   - component: {fileID: 546708101998375945}
   - component: {fileID: 3442011110078296408}
   - component: {fileID: 2713738989723426322}
+  - component: {fileID: 8668368130343953123}
   - component: {fileID: 1324342421715946718}
   m_Layer: 5
   m_Name: Shed
@@ -1128,12 +1143,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 3442011110078296408}
-  _audioSource: {fileID: 1324342421715946718}
   _rectTransform: {fileID: 546708101998375945}
   _animationButtonType: 2
   _curveEase: 1
   _duration: 0.6
   _strength: 30
+--- !u!114 &8668368130343953123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355375007463569096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22aa2db73bc342348838c026924733b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 3442011110078296408}
+  _audioSource: {fileID: 1324342421715946718}
 --- !u!82 &1324342421715946718
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1400,6 +1428,7 @@ GameObject:
   - component: {fileID: 6736796837008514560}
   - component: {fileID: 871876899705815074}
   - component: {fileID: 2046877770162043010}
+  - component: {fileID: 4890955099046198234}
   - component: {fileID: 5142298661854717040}
   m_Layer: 5
   m_Name: Exit
@@ -1487,12 +1516,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 871876899705815074}
-  _audioSource: {fileID: 5142298661854717040}
   _rectTransform: {fileID: 6736796837008514560}
   _animationButtonType: 2
   _curveEase: 1
   _duration: 0.6
   _strength: 30
+--- !u!114 &4890955099046198234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247970735011919906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22aa2db73bc342348838c026924733b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 871876899705815074}
+  _audioSource: {fileID: 5142298661854717040}
 --- !u!82 &5142298661854717040
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1668,6 +1710,7 @@ GameObject:
   - component: {fileID: 8447452373435380555}
   - component: {fileID: 5441526436421094479}
   - component: {fileID: 1349844329076662872}
+  - component: {fileID: 641812094226396074}
   - component: {fileID: 6906411704466313646}
   m_Layer: 5
   m_Name: StartButton
@@ -1755,12 +1798,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 5441526436421094479}
-  _audioSource: {fileID: 6906411704466313646}
   _rectTransform: {fileID: 8447452373435380555}
   _animationButtonType: 2
   _curveEase: 1
   _duration: 0.6
   _strength: 30
+--- !u!114 &641812094226396074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279821671311029660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22aa2db73bc342348838c026924733b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 5441526436421094479}
+  _audioSource: {fileID: 6906411704466313646}
 --- !u!82 &6906411704466313646
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2799,6 +2855,7 @@ GameObject:
   - component: {fileID: 5036120147073595336}
   - component: {fileID: 5342857100112835716}
   - component: {fileID: 1981665152809051033}
+  - component: {fileID: 3149587600862518066}
   - component: {fileID: 1304921011488151262}
   m_Layer: 5
   m_Name: Settings
@@ -2886,12 +2943,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 5342857100112835716}
-  _audioSource: {fileID: 1304921011488151262}
   _rectTransform: {fileID: 5036120147073595336}
   _animationButtonType: 2
   _curveEase: 1
   _duration: 0.6
   _strength: 30
+--- !u!114 &3149587600862518066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898454844111016424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22aa2db73bc342348838c026924733b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 5342857100112835716}
+  _audioSource: {fileID: 1304921011488151262}
 --- !u!82 &1304921011488151262
 AudioSource:
   m_ObjectHideFlags: 0
