@@ -201,10 +201,10 @@ namespace Rewards
             for (int i = 0; i < _slots.Count; i++)
             {
                 Reward reward = _view.Rewards[i];
-                int countDay = i + 1;
+                int countCooldownPeriods = i + 1;
                 bool isSelected = i == _view.CurrentSlotInActive;
 
-                _slots[i].SetData(reward, countDay, isSelected);
+                _slots[i].SetData(reward, countCooldownPeriods, isSelected);
             }
         }
     }
