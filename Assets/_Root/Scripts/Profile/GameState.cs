@@ -6,6 +6,7 @@ namespace Profile
         Start,
         Settings,
         Shed,
+        DailyReward,
         Game
     }
 }

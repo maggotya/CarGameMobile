@@ -1,51 +1,75 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Features.Rewards.Currency;
 using Features.Rewards.Slot;
+using Features.Rewards.Currency;
+using Tool;
+using Profile;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Features.Rewards
 {
-    internal class RewardController
+    internal class RewardController : BaseController
     {
+        private readonly ResourcePath _resourcePath = new("Prefabs/Rewards/DailyRewardsWindow Variant");
+        private readonly CurrencyController _currencyController;
+        private readonly ProfilePlayer _profilePlayer;
         private readonly RewardView _view;
 
         private List<ContainerSlotRewardView> _slots;
         private Coroutine _coroutine;
 
         private bool _isGetReward;
-        private bool _isInitialized;
 
 
-        public RewardController(RewardView view) =>
-            _view = view;
-
-
-        public void Init()
+        public RewardController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
-            if (_isInitialized)
-                return;
+            _view = LoadView(placeForUi);
+            _profilePlayer = profilePlayer;
+            _currencyController = CreateCurrencyController(placeForUi);
 
+            InitView();
+        }
+
+        protected override void OnDispose()
+        {
+            base.OnDispose();
+            DeinitView();
+        }
+
+
+        private RewardView LoadView(Transform placeForUi)
+        {
+            GameObject prefab = ResourcesLoader.LoadPrefab(_resourcePath);
+            GameObject objectView = Object.Instantiate(prefab, placeForUi, false);
+            AddGameObject(objectView);
+
+            return objectView.GetComponent<RewardView>();
+        }
+
+        private CurrencyController CreateCurrencyController(Transform placeForUi)
+        {
+            CurrencyController currencyController = new(placeForUi);
+            AddController(currencyController);
+
+            return currencyController;
+        }
+
+
+        private void InitView()
+        {
             InitSlots();
             RefreshUi();
             StartRewardsUpdating();
             SubscribeButtons();
-
-            _isInitialized = true;
         }
 
-        public void Deinit()
+        private void DeinitView()
         {
-            if (!_isInitialized)
-                return;
-
             DeinitSlots();
             StopRewardsUpdating();
             UnsubscribeButtons();
-
-            _isInitialized = false;
         }
 
 
@@ -106,12 +130,14 @@ namespace Features.Rewards
         {
             _view.GetRewardButton.onClick.AddListener(ClaimReward);
             _view.ResetButton.onClick.AddListener(ResetRewardsState);
+            _view.CloseButton.onClick.AddListener(Close);
         }
 
         private void UnsubscribeButtons()
         {
             _view.GetRewardButton.onClick.RemoveListener(ClaimReward);
             _view.ResetButton.onClick.RemoveListener(ResetRewardsState);
+            _view.CloseButton.onClick.RemoveListener(Close);
         }
 
         private void ClaimReward()
@@ -124,10 +150,10 @@ namespace Features.Rewards
             switch (reward.RewardType)
             {
                 case RewardType.Wood:
-                    CurrencyView.Instance.AddWood(reward.CountCurrency);
+                    _currencyController.AddWood(reward.CountCurrency);
                     break;
                 case RewardType.Diamond:
-                    CurrencyView.Instance.AddDiamond(reward.CountCurrency);
+                    _currencyController.AddDiamond(reward.CountCurrency);
                     break;
             }
 
@@ -207,5 +233,8 @@ namespace Features.Rewards
                 _slots[i].SetData(reward, countCooldownPeriods, isSelected);
             }
         }
+
+        private void Close() =>
+            _profilePlayer.CurrentState.Value = GameState.Start;
     }
 }

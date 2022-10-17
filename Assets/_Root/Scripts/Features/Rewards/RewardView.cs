@@ -1,9 +1,9 @@
+using TMPro;
 using System;
 using System.Collections.Generic;
-using Features.Rewards.Slot;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Features.Rewards.Slot;
 
 namespace Features.Rewards
 {
@@ -26,6 +26,7 @@ namespace Features.Rewards
         [field: SerializeField] public ContainerSlotRewardView ContainerSlotRewardPrefab { get; private set; }
         [field: SerializeField] public Button GetRewardButton { get; private set; }
         [field: SerializeField] public Button ResetButton { get; private set; }
+        [field: SerializeField] public Button CloseButton { get; private set; }
 
         public int CurrentSlotInActive
         {

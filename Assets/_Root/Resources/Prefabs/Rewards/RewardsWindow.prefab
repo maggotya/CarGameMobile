@@ -720,6 +720,7 @@ MonoBehaviour:
   <ContainerSlotRewardPrefab>k__BackingField: {fileID: 0}
   <GetRewardButton>k__BackingField: {fileID: 5134989088390039494}
   <ResetButton>k__BackingField: {fileID: 5134989089592654994}
+  <CloseButton>k__BackingField: {fileID: 5134989089121392442}
 --- !u!1 &5134989089541714265
 GameObject:
   m_ObjectHideFlags: 0

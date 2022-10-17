@@ -2198,6 +2198,7 @@ MonoBehaviour:
   _buttonStart: {fileID: 5441526436421094479}
   _buttonSettings: {fileID: 5342857100112835716}
   _buttonShed: {fileID: 3442011110078296408}
+  _buttonDailyReward: {fileID: 6057769820315644180}
   _buttonAdsReward: {fileID: 5608503817596840365}
   _buttonBuyProduct: {fileID: 4012727613815735783}
 --- !u!1 &6221595884795600595
