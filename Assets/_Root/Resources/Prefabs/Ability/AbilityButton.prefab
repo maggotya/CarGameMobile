@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6811999070892879682}
   m_RootOrder: 1
@@ -86,6 +87,7 @@ GameObject:
   - component: {fileID: 6811999070892879682}
   - component: {fileID: 5634101492620519057}
   - component: {fileID: 7355306249026046447}
+  - component: {fileID: 8682430979871406926}
   m_Layer: 5
   m_Name: AbilityButton
   m_TagString: Untagged
@@ -103,11 +105,12 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6671897941618166360}
   - {fileID: 2064623477423124226}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -172,6 +175,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8682430979871406926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041407327061402687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b7f6bfaf45d49709c0be70249d9ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 7355306249026046447}
+  _rectTransform: {fileID: 6811999070892879682}
+  _animationButtonType: 1
+  _curveEase: 1
+  _duration: 0.6
+  _strength: 30
+  _isIndependentUpdate: 1
 --- !u!1 &8601747809900227611
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +222,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6811999070892879682}
   m_RootOrder: 0
