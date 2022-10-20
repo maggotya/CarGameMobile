@@ -24,6 +24,7 @@ namespace Tween.Editor
             PropertyField animationType = new(serializedObject.FindProperty(CustomButton_Obsolete.AnimationTypeName));
             PropertyField curveEase = new(serializedObject.FindProperty(CustomButton_Obsolete.CurveEaseName));
             PropertyField duration = new(serializedObject.FindProperty(CustomButton_Obsolete.DurationName));
+            PropertyField independentUpdate = new PropertyField(serializedObject.FindProperty(CustomButton_Obsolete.IndependentUpdateName));
 
             Label tweenLabel = new("Settings Tween");
             Label intractableLabel = new("Interactable");
@@ -32,6 +33,7 @@ namespace Tween.Editor
             root.Add(animationType);
             root.Add(curveEase);
             root.Add(duration);
+            root.Add(independentUpdate);
 
             root.Add(intractableLabel);
             root.Add(new IMGUIContainer(OnInspectorGUI));
