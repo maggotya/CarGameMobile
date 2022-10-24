@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c30e686a79749278d21dae69747112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settings: {fileID: 11400000, guid: 9d40950adcadb474885cb515867b53a8, type: 2}
   _buttonNotification: {fileID: 223596597}
 --- !u!114 &1965317999
 MonoBehaviour:
