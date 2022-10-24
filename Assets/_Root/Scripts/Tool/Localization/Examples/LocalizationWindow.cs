@@ -6,6 +6,10 @@ namespace Tool.Localization.Examples
 {
     internal abstract class LocalizationWindow : MonoBehaviour
     {
+        private const int EnglishIndex = 0;
+        private const int FrenchIndex = 1;
+        private const int RussianIndex = 2;
+
         [Header("Scene Components")]
         [SerializeField] private Button _englishButton;
         [SerializeField] private Button _frenchButton;
@@ -14,9 +18,9 @@ namespace Tool.Localization.Examples
 
         private void Start()
         {
-            _englishButton.onClick.AddListener(() => ChangeLanguage(0));
-            _frenchButton.onClick.AddListener(() => ChangeLanguage(1));
-            _russianButton.onClick.AddListener(() => ChangeLanguage(2));
+            _englishButton.onClick.AddListener(() => ChangeLanguage(EnglishIndex));
+            _frenchButton.onClick.AddListener(() => ChangeLanguage(FrenchIndex));
+            _russianButton.onClick.AddListener(() => ChangeLanguage(RussianIndex));
             OnStarted();
         }
 
