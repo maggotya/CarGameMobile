@@ -8,6 +8,7 @@ namespace Ui
     {
         private readonly ResourcePath _resourcePath = new("Prefabs/Game/GameMenu");
         private readonly ProfilePlayer _profilePlayer;
+        private readonly Pause _pause;
 
 
         public GameMenuController(Transform placeForUi, ProfilePlayer profilePlayer)
@@ -15,7 +16,18 @@ namespace Ui
             _profilePlayer = profilePlayer;
 
             GameMenuView view = LoadView(placeForUi);
-            view.Init(Back);
+            view.Init(Back, Pause);
+
+            _pause = new Pause();
+            CreatePauseMenuController(placeForUi, profilePlayer, _pause);
+        }
+
+        protected override void OnDispose()
+        {
+            base.OnDispose();
+
+            if (_pause.IsEnabled)
+                _pause.Disable();
         }
 
 
@@ -28,6 +40,16 @@ namespace Ui
             return objectView.GetComponent<GameMenuView>();
         }
 
+        private PauseMenuController CreatePauseMenuController(
+            Transform placeForUi, ProfilePlayer profilePlayer, Pause pause)
+        {
+            PauseMenuController pauseMenuController = new(placeForUi, profilePlayer, pause);
+            AddController(pauseMenuController);
+
+            return pauseMenuController;
+        }
+
+        private void Pause() => _pause.Enable();
         private void Back() => _profilePlayer.CurrentState.Value = GameState.Start;
     }
 }
