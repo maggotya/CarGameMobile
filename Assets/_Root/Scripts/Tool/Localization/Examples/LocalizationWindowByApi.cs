@@ -29,24 +29,23 @@ namespace Tool.Localization.Examples
         }
 
 
-        private void OnSelectedLocaleChanged(Locale _) => UpdateTextAsync();
-        private void UpdateTextAsync() => StartCoroutine(UpdateTextRoutine());
+        private void OnSelectedLocaleChanged(Locale _) =>
+            UpdateTextAsync();
 
-        private IEnumerator UpdateTextRoutine()
-        {
-            AsyncOperationHandle<StringTable> loadingOperation = LocalizationSettings.StringDatabase.GetTableAsync(_tableName);
-            yield return loadingOperation;
-
-            if (loadingOperation.Status == AsyncOperationStatus.Succeeded)
-            {
-                StringTable table = loadingOperation.Result;
-                _changeText.text = table.GetEntry(_localizationTag)?.GetLocalizedString();
-            }
-            else
-            {
-                string errorMessage = $"[{GetType().Name}] Could not load String Table: {loadingOperation.OperationException}";
-                Debug.LogError(errorMessage);
-            }
-        }
+        private void UpdateTextAsync() =>
+            LocalizationSettings.StringDatabase.GetTableAsync(_tableName).Completed +=
+                handle =>
+                {
+                    if (handle.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        StringTable table = handle.Result;
+                        _changeText.text = table.GetEntry(_localizationTag)?.GetLocalizedString();
+                    }
+                    else
+                    {
+                        string errorMessage = $"[{GetType().Name}] Could not load String Table: {handle.OperationException}";
+                        Debug.LogError(errorMessage);
+                    }
+                };
     }
 }
