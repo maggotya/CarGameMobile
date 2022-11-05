@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 358a0b338c3104c48b4c063f439d3419
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: dede5f4548992dd4ba1c9840a451ed31
+    m_Address: Assets/_Root/Sprites/SkySprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f2fd3f2671b0342c085196b05069e11a, type: 2}
   m_SchemaSet:

@@ -12,13 +12,21 @@ namespace Tool.Bundles.Examples
         [SerializeField] private Button _loadAssetsButton;
         [SerializeField] private Button _changeBackgroundButton;
 
-        [Header("Addressables")]
+        [Header("Addressables Spawning")]
         [SerializeField] private AssetReference _spawningButtonPrefab;
         [SerializeField] private RectTransform _spawnedButtonsContainer;
         [SerializeField] private Button _spawnAssetButton;
 
+        [Header("Addressables Background")]
+        [SerializeField] private AssetReference _background;
+        [SerializeField] private Image _backgroundComponent;
+        [SerializeField] private Button _addBackgroundButton;
+        [SerializeField] private Button _removeBackgroundButton;
+
         private readonly List<AsyncOperationHandle<GameObject>> _addressablePrefabs =
             new List<AsyncOperationHandle<GameObject>>();
+
+        private AsyncOperationHandle<Sprite> _loadedBackground;
 
 
         private void Start()
@@ -27,6 +35,8 @@ namespace Tool.Bundles.Examples
             _changeBackgroundButton.onClick.AddListener(ChangeBackground);
 
             _spawnAssetButton.onClick.AddListener(SpawnPrefab);
+            _addBackgroundButton.onClick.AddListener(AddBackground);
+            _removeBackgroundButton.onClick.AddListener(RemoveBackground);
         }
 
         private void OnDestroy()
@@ -35,8 +45,11 @@ namespace Tool.Bundles.Examples
             _changeBackgroundButton.onClick.RemoveAllListeners();
 
             _spawnAssetButton.onClick.RemoveAllListeners();
+            _addBackgroundButton.onClick.RemoveAllListeners();
+            _removeBackgroundButton.onClick.RemoveAllListeners();
 
             DespawnPrefabs();
+            RemoveBackground();
         }
 
 
@@ -69,5 +82,34 @@ namespace Tool.Bundles.Examples
 
             _addressablePrefabs.Clear();
         }
+
+
+        private void AddBackground()
+        {
+            if (!_loadedBackground.IsValid())
+            {
+                _loadedBackground = Addressables.LoadAssetAsync<Sprite>(_background);
+                _loadedBackground.Completed += OnBackgroundLoaded;
+            }
+        }
+
+        private void RemoveBackground()
+        {
+            if (_loadedBackground.IsValid())
+            {
+                _loadedBackground.Completed -= OnBackgroundLoaded;
+                Addressables.Release(_loadedBackground);
+                SetBackground(null);
+            }
+        }
+
+        private void OnBackgroundLoaded(AsyncOperationHandle<Sprite> asyncOperationHandle)
+        {
+            asyncOperationHandle.Completed -= OnBackgroundLoaded;
+            SetBackground(asyncOperationHandle.Result);
+        }
+
+        private void SetBackground(Sprite background) =>
+            _backgroundComponent.sprite = background;
     }
 }
