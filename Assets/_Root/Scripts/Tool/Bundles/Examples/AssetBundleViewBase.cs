@@ -18,18 +18,24 @@ namespace Tool.Bundles.Examples
         private AssetBundle _audioAssetBundle;
 
 
-        protected IEnumerator DownloadAndSetAssetBundles()
+        protected IEnumerator DownloadAndSetSpritesAssetBundles()
         {
-            // сначала скачиваем нужные бандлы
+            // скачиваем бандл
             yield return GetSpritesAssetBundle();
-            yield return GetAudioAssetBundle();
 
-            //затем устанавливаем контент из скачанных бандлов
+            // устанавливаем контент из скачанного бандла
             if (_spritesAssetBundle != null)
                 SetSpriteAssets(_spritesAssetBundle);
             else
                 Debug.LogError($"AssetBundle {nameof(_spritesAssetBundle)} failed to load");
+        }
 
+        protected IEnumerator DownloadAndSetAudioAssetBundles()
+        {
+            // скачиваем бандл
+            yield return GetAudioAssetBundle();
+
+            // устанавливаем контент из скачанного бандла
             if (_audioAssetBundle != null)
                 SetAudioAssets(_audioAssetBundle);
             else
