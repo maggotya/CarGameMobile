@@ -10,6 +10,7 @@ namespace Tool.Bundles.Examples
     {
         [Header("Asset Bundles")]
         [SerializeField] private Button _loadAssetsButton;
+        [SerializeField] private Button _changeBackgroundButton;
 
         [Header("Addressables")]
         [SerializeField] private AssetReference _spawningButtonPrefab;
@@ -23,12 +24,16 @@ namespace Tool.Bundles.Examples
         private void Start()
         {
             _loadAssetsButton.onClick.AddListener(LoadAssets);
+            _changeBackgroundButton.onClick.AddListener(ChangeBackground);
+
             _spawnAssetButton.onClick.AddListener(SpawnPrefab);
         }
 
         private void OnDestroy()
         {
             _loadAssetsButton.onClick.RemoveAllListeners();
+            _changeBackgroundButton.onClick.RemoveAllListeners();
+
             _spawnAssetButton.onClick.RemoveAllListeners();
 
             DespawnPrefabs();
@@ -41,6 +46,13 @@ namespace Tool.Bundles.Examples
             StartCoroutine(DownloadAndSetSpritesAssetBundles());
             StartCoroutine(DownloadAndSetAudioAssetBundles());
         }
+
+        private void ChangeBackground()
+        {
+            _changeBackgroundButton.interactable = false;
+            StartCoroutine(DownloadAndSetBackgroundsAssetBundle());
+        }
+
 
         private void SpawnPrefab()
         {
