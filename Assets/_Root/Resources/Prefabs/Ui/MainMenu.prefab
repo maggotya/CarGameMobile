@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 1018481598779622869}
   - component: {fileID: 6187104521848169532}
   - component: {fileID: 5401148309361537013}
+  - component: {fileID: 510962035418813142}
   m_Layer: 5
   m_Name: DailyReward
   m_TagString: Untagged
@@ -466,6 +467,41 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &510962035418813142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825132258204156803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:cd01bb18c3c4c4b12ab465dbf6571b7f
+    m_TableEntryReference:
+      m_KeyId: 511804694528
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7846464997735743266}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &887898719112217274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1135,7 @@ GameObject:
   - component: {fileID: 8668368130343953123}
   - component: {fileID: 1324342421715946718}
   - component: {fileID: 5912344076865912323}
+  - component: {fileID: 7623845698905022390}
   m_Layer: 5
   m_Name: Shed
   m_TagString: Untagged
@@ -1340,6 +1377,41 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &7623845698905022390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355375007463569096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:cd01bb18c3c4c4b12ab465dbf6571b7f
+    m_TableEntryReference:
+      m_KeyId: 511804694528
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1715597212575786683}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2590375255849645188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,6 +1423,7 @@ GameObject:
   - component: {fileID: 7659993141450332189}
   - component: {fileID: 4012727613815735783}
   - component: {fileID: 4174905667341398684}
+  - component: {fileID: 5508966819303997709}
   m_Layer: 5
   m_Name: BuyProductButton
   m_TagString: Untagged
@@ -1464,6 +1537,41 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &5508966819303997709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590375255849645188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:cd01bb18c3c4c4b12ab465dbf6571b7f
+    m_TableEntryReference:
+      m_KeyId: 606138785792
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2851233046640421110}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2716724307907107142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,6 +1662,7 @@ GameObject:
   - component: {fileID: 4890955099046198234}
   - component: {fileID: 5142298661854717040}
   - component: {fileID: 8602179890811348929}
+  - component: {fileID: 5996577122361493729}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1795,6 +1904,41 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &5996577122361493729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247970735011919906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:cd01bb18c3c4c4b12ab465dbf6571b7f
+    m_TableEntryReference:
+      m_KeyId: 511804694528
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6870395031242207177}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3362502646258824450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,6 +2021,7 @@ GameObject:
   - component: {fileID: 641812094226396074}
   - component: {fileID: 6906411704466313646}
   - component: {fileID: 7632944949196547832}
+  - component: {fileID: 5101013258606581963}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -2118,6 +2263,41 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &5101013258606581963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279821671311029660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:cd01bb18c3c4c4b12ab465dbf6571b7f
+    m_TableEntryReference:
+      m_KeyId: 13949198336
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1191177574402344178}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5475178073693929459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,6 +2811,7 @@ GameObject:
   - component: {fileID: 6177330248361299306}
   - component: {fileID: 5608503817596840365}
   - component: {fileID: 7763318141070154794}
+  - component: {fileID: 8013506317696169006}
   m_Layer: 5
   m_Name: RewardedAdsButton
   m_TagString: Untagged
@@ -2744,6 +2925,41 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &8013506317696169006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389363656245868887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:cd01bb18c3c4c4b12ab465dbf6571b7f
+    m_TableEntryReference:
+      m_KeyId: 606138785792
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6096406609737477427}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6888920513732523659
 GameObject:
   m_ObjectHideFlags: 0
@@ -3106,6 +3322,7 @@ GameObject:
   - component: {fileID: 3149587600862518066}
   - component: {fileID: 1304921011488151262}
   - component: {fileID: 342161673885700319}
+  - component: {fileID: 891626499655601452}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -3347,3 +3564,38 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &891626499655601452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898454844111016424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:cd01bb18c3c4c4b12ab465dbf6571b7f
+    m_TableEntryReference:
+      m_KeyId: 511804694528
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2978644375438813802}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
