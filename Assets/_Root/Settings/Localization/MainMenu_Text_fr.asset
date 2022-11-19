@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainMenu_Text_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: f512c3c03679647bba4d0fd040ef25dc, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 128696967168
+    m_Localized: Commencer le jeu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 225249845248
+    m_Localized: "R\xE9compense Quotidienne"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254777745408
+    m_Localized: Hangar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271718539264
+    m_Localized: "Param\xE8tre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290920062976
+    m_Localized: Sortie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1414184034304
+    m_Localized: "Annonces R\xE9compens\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569570414592
+    m_Localized: Acheter Un Produit
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
