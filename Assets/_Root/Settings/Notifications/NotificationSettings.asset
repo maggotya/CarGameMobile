@@ -17,6 +17,10 @@ MonoBehaviour:
     <Name>k__BackingField: Main Channel
     <Description>k__BackingField: It is the main channel!
     _importance: 4
+  - <Id>k__BackingField: notification_homework
+    <Name>k__BackingField: Homework Channel
+    <Description>k__BackingField: Channel for homework
+    _importance: 3
   <Notifications>k__BackingField:
   - <Id>k__BackingField: notification_id
     <Title>k__BackingField: Game Notification
@@ -28,5 +32,17 @@ MonoBehaviour:
       <Day>k__BackingField: 18
       <Hour>k__BackingField: 23
       <Minute>k__BackingField: 30
+    <RepeatInterval>k__BackingField:
+      <Seconds>k__BackingField: 30
+  - <Id>k__BackingField: notification_homework
+    <Title>k__BackingField: Homework Notification
+    <Text>k__BackingField: Hello from Homework!
+    <RepeatType>k__BackingField: 0
+    <FireTime>k__BackingField:
+      <Year>k__BackingField: 2022
+      <Month>k__BackingField: 8
+      <Day>k__BackingField: 20
+      <Hour>k__BackingField: 14
+      <Minute>k__BackingField: 15
     <RepeatInterval>k__BackingField:
       <Seconds>k__BackingField: 30
